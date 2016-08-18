@@ -2,6 +2,7 @@ package modelo;
 
 import excecoes.ExcecaoZonaEleitoralExistente;
 import java.util.ArrayList;
+import visao.GUI;
 
 public class FachadaCartorioEleitoral {
 
@@ -22,9 +23,9 @@ public class FachadaCartorioEleitoral {
         if (zonaExistente == null) {
             ZonaEleitoral zonaNova = new ZonaEleitoral(numeroZonaEleitoral, localizacao);
             this.zonas.add(zonaNova);
+        } else {
+            throw new ExcecaoZonaEleitoralExistente();
         }
-        else
-           throw new ExcecaoZonaEleitoralExistente();
     }
 
     public ZonaEleitoral getZona(int numeroZonaEleitoral) {
@@ -50,7 +51,7 @@ public class FachadaCartorioEleitoral {
         }
     }
 
-    public int numeroDeSecao() {
+    public int numeroDeSecoes() {
         return this.secoes.size();
     }
 
@@ -64,18 +65,18 @@ public class FachadaCartorioEleitoral {
         return null;
     }
 
-    public void cadastraEleitor(int cpf, String nome, int titulo) {
-        Eleitor eleitor = getEleitor(cpf);
-        if (eleitor == null) {
-            eleitor = new Eleitor(cpf, nome, titulo);
-            this.eleitores.add(eleitor);
+    public void cadastraEleitor(String cpf, String nome, String titulo) {
+        Eleitor eleitorExistente = getEleitor(cpf);
+        if (eleitorExistente == null) {
+            Eleitor eleitorNovo = new Eleitor(cpf, nome, titulo);
+            this.eleitores.add(eleitorNovo);
         }
     }
 
-    public Eleitor getEleitor(int cpf) {
+    public Eleitor getEleitor(String cpf) {
         for (int i = 0; i < this.eleitores.size(); i++) {
             Eleitor eleitor = this.eleitores.get(i);
-            if (eleitor.getCpf() == cpf) {
+            if (eleitor.getCpf().equals(cpf)) {
                 return eleitor;
             }
         }
@@ -105,4 +106,14 @@ public class FachadaCartorioEleitoral {
         return null;
     }
 
+    public boolean verifica (int numero) {
+        return zonas.contains(numero);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+    
+    
 }

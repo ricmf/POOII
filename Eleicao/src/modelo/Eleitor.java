@@ -2,15 +2,15 @@ package modelo;
 
 public class Eleitor {
 
-    private int cpf;
+    private String cpf;
     private String nome;
-    private int titulo;
+    private String titulo;
     private ZonaEleitoral zona;
     private Secao secao;
     private String endereco;
     private String municipio;
 
-    public Eleitor(int cpf, String nome, int titulo) {
+    public Eleitor(String cpf, String nome, String titulo) {
         this.cpf = cpf;
         this.nome = nome;
         this.titulo = titulo;
@@ -28,7 +28,7 @@ public class Eleitor {
         this.municipio = municipio;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
@@ -36,7 +36,7 @@ public class Eleitor {
         return nome;
     }
 
-    public int getTitulo() {
+        public String getTitulo() {
         return titulo;
     }
 

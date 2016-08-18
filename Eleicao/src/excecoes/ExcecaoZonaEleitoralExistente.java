@@ -11,12 +11,4 @@ public class ExcecaoZonaEleitoralExistente extends Exception {
         super(msg);
     }
     
-    /*
-    boolean loopFlag = true;
-
-		while (loopFlag) {
-
-			int flag = GUI
-					.inputInt
-    */
 }
